@@ -6,9 +6,25 @@ import User from '@/components/user/User'
 Vue.use(VueRouter);
 
 const routes = [
-    {path: '/', redirect: '/home'},
+    {
+        path: '/user', 
+        children: [{
+            path: '/login',
+            name: 'login',
+            components: () => import(/* webpackChunkName: "user" */"./views/About.vue")
+        },
+        {
+            path: '/register',
+            name: 'register',
+            components: () => import(/* webpackChunkName: "user" */"./views/About.vue")
+        }]
+    },
     {path: '/home', component: Home},
     {path: '/user', component: User}
 ]
 
-export const router = new VueRouter({routes: routes});
+export const router = new VueRouter({
+    mode: 'history',
+    base: process.env.BASE_URL, //域名后面的目录
+    routes: routes
+});
