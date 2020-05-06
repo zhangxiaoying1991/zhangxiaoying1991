@@ -1,11 +1,13 @@
 import Vue from 'vue'
+// import Vue from 'vue/dist/vue.esm.js'
 import App from './App.vue'
 import { router } from './router.js'
-import { Button } from 'ant-design-vue'
+
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
 
 Vue.config.productionTip = false
-
-Vue.use(Button);
 
 new Vue({
   router,
